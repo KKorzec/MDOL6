@@ -73,7 +73,8 @@ pipeline {
 		sh 'docker rm -f publishbuffer || true'
                 sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
                 sh 'docker run -d --rm --name publishbuffer --mount type=volume,src="volout",dst=/app/result --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy ubuntu  bash -c "chmod -R 777 /app && cp -r /app/. /usr/local/copy"'
-		sh "tar -czvf irssi-ver-${params.VERSION}.tar.gz ."
+		sh "touch irssi-ver${params.VERSION}.tar.gz"
+		sh "tar --exclude=irssi-ver${params.VERSION}.tar.gz -zcvf irssi-ver${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts ."
 		archiveArtifacts artifacts: "irssi-ver${params.VERSION}.tar.gz"
             }
             
