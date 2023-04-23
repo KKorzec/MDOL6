@@ -83,7 +83,7 @@ pipeline {
 		// sh "tar -zcvf irssi-ver${params.VERSION}.tar.gz --exclude=irssi-ver${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts ."
 		echo "pwd"
 		sh "rm -r /var/jenkins_home/workspace/tmp/*"
-		sh "cp * /var/jenkins_home/workspace/tmp"
+		sh "cp -R * /var/jenkins_home/workspace/tmp"
 		sh "cd /var/jenkins_home/workspace/tmp"
 		sh "tar -zcvf irssi-ver${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts ."
 		sh "cd /var/jenkins_home/workspace/artifacts"
