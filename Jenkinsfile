@@ -84,7 +84,7 @@ pipeline {
 		sh "cd /var/jenkins_home/workspace/artifacts/result/irssi"
 		sh "tar -zcvf irssi-ver${params.VERSION}.tar.gz ."
 		archiveArtifacts artifacts: "irssi-ver${params.VERSION}.tar.gz"
-		sh 'docker rm -f publish'
+		sh 'docker rm -f publishbuffer'
             }
             
         }
