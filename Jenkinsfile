@@ -22,6 +22,9 @@ pipeline {
         }
         stage('Build') {
             steps {
+	      checkout([$class: 'GitSCM', 
+              branches: [[name: '*/main']], 
+              userRemoteConfigs: [[url: 'https://github.com/KKorzec/MDOL6']]])
               sh 'docker system prune -f'
 	      git 'https://github.com/KKorzec/MDOL6'
               sh 'docker build -t irssibld . -f DockerfileBuild'
