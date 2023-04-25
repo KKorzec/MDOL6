@@ -84,7 +84,7 @@ pipeline {
 		sh "cd /var/jenkins_home/workspace/tmp"
 		sh "tar -zcvf irssi-ver${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts . >> log-publish.txt"
 		sh "cd /var/jenkins_home/workspace/artifacts"
-		archiveArtifacts artifacts: "irssi-ver${params.VERSION}.tar.gz >> log-publish.txt"
+		archiveArtifacts artifacts: "irssi-ver${params.VERSION}.tar.gz"
 		sh 'docker rm -f publishbuffer'
             }
             
