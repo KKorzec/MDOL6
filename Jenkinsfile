@@ -22,6 +22,7 @@ pipeline {
 	      checkout([$class: 'GitSCM', 
               branches: [[name: '*/main']], 
               userRemoteConfigs: [[url: 'https://github.com/KKorzec/MDOL6']]])
+	      sh 'rm -f /var/jenkins_home/workspace/MDOL6/log-*.txt'
               sh 'docker system prune -f'
 	      git 'https://github.com/KKorzec/irssiMDO'
               sh 'docker build -t irssibld . -f DockerfileBuild'
